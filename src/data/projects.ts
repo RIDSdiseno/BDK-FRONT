@@ -43,11 +43,11 @@ export const projects: Project[] = [
       'Placeholder para descripcion detallada del proyecto UC Christus. Agregar alcance, plazos, metraje y especialidades involucradas.',
     images: [
       {
-        src: '/Foto1.PNG',
+        src: '/Foto1.jpeg',
         alt: 'Proyecto UC Christus - imagen 1',
       },
       {
-        src: '/foto2.PNG',
+        src: '/foto2.jpg',
         alt: 'Proyecto UC Christus - imagen 2',
       },
       {
@@ -74,7 +74,7 @@ export const projects: Project[] = [
         alt: 'Proyecto CHP - imagen 2',
       },
       {
-        src: '/Foto1.PNG',
+        src: '/Foto1.jpeg',
         alt: 'Proyecto CHP - imagen 3',
       },
     ],

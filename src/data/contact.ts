@@ -50,7 +50,7 @@ export const contactPage = {
   ] satisfies ContactInfoItem[],
   images: [
     {
-      src: '/foto2.PNG',
+      src: '/foto2.jpg',
       alt: 'Equipo de contacto en obra',
     },
     {

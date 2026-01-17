@@ -28,11 +28,11 @@ export const aboutSection = {
   },
   images: [
     {
-      src: '/Foto1.PNG',
+      src: '/Foto1.jpeg',
       alt: 'Equipo en obra',
     },
     {
-      src: '/foto2.PNG',
+      src: '/foto2.jpg',
       alt: 'Estructura en construccion',
     },
     {
