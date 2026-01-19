@@ -17,7 +17,6 @@ C:\USERS\GEORGES\DESKTOP\BDK-FRONT\BDK-FRONT\SRC
 |       ScrollToHash.tsx
 |       
 +---assets
-|       react.svg
 |       
 +---components
 |   \---shared
@@ -99,7 +98,6 @@ C:\USERS\GEORGES\DESKTOP\BDK-FRONT\BDK-FRONT\SRC
 |           ScrollAlHash.tsx
 |           
 +---assets
-|       react.svg
 |       
 +---componentes
 |   +---comunes
