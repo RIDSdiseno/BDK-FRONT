@@ -1,13 +1,12 @@
-# Arquitectura actual (antes de reestructura)
+# Arquitectura del proyecto
 
-## Estado general
-- Este repositorio contiene **solo frontend** (React + TypeScript + Vite).
-- **No existe carpeta de backend** en el proyecto actual. La reestructura del backend queda pendiente cuando exista un repositorio o carpeta con `src/` de servidor.
+## Resumen
+- **Frontend**: React + TypeScript + Vite (SPA corporativa).
+- **Backend**: no presente en este repositorio. Queda pendiente la modularizacion cuando exista un `src/` de servidor.
 
-## Arbol actual (front `src/`)
+## Mapa inicial (antes de reestructura)
+### Arbol inicial (front `src/`)
 ```
-Listado de rutas de carpetas
-El nsero de serie del volumen es 000000CF BABE:2D6B
 C:\USERS\GEORGES\DESKTOP\BDK-FRONT\BDK-FRONT\SRC
 |   index.css
 |   main.tsx
@@ -65,31 +64,152 @@ C:\USERS\GEORGES\DESKTOP\BDK-FRONT\BDK-FRONT\SRC
         ProyectosPage.tsx
 ```
 
-## Arbol actual (back `src/`)
-- **No existe backend** en este repo (no hay carpeta `src/` de servidor).
-
-## Router principal y paginas
+### Router y paginas (estado inicial)
 - Router principal: `src/app/AppRouter.tsx`
-- Paginas: `src/pages/HomePage.tsx`, `src/pages/ProyectosPage.tsx`, `src/pages/ContactoPage.tsx`
-- Utilidad de scroll por hash: `src/app/ScrollToHash.tsx`
+- Paginas: `HomePage`, `ProyectosPage`, `ContactoPage`
+- Scroll por hash: `src/app/ScrollToHash.tsx`
 
-## Componentes reutilizables vs de pagina
-- Reutilizables (shared): `src/components/shared/*`
-- Componentes de pagina / secciones: `src/features/home/sections/*`, `src/features/proyectos/*`, `src/features/contacto/*`
-
-## Servicios de API / context / stores
-- **No existen** servicios API, context providers, stores o capas HTTP en el estado actual.
-
-## Backend (controllers, routes, services, repos, middlewares)
-- **No aplica**: no hay backend en este repositorio.
-
-## Mapa de modulos (actual)
-- Inicio (home): Hero, About, Por que elegirnos, Clientes (marquee)
-- Proyectos: grid + cards + modal de detalle
+### Modulos (estado inicial)
+- Inicio: Hero, About, Por que elegirnos, Clientes (cinta)
+- Proyectos: grid + tarjetas + modal
 - Contacto: formulario + info + imagenes
 
-## Rutas activas
-- `/` -> Home
-- `/proyectos` -> Proyectos
-- `/contacto` -> Contacto
-- `*` -> NotFound basico
+### Rutas activas (estado inicial)
+- `/`
+- `/proyectos`
+- `/contacto`
+
+## Estructura actual (despues de reestructura)
+### Arbol actual (front `src/`)
+```
+C:\USERS\GEORGES\DESKTOP\BDK-FRONT\BDK-FRONT\SRC
+|   main.tsx
+|   
++---app
+|   |   App.tsx
+|   |   
+|   +---layouts
+|   |       LayoutPrincipal.tsx
+|   |       
+|   +---providers
+|   |       ProveedoresApp.tsx
+|   |       
+|   \---router
+|           RouterPrincipal.tsx
+|           ScrollAlHash.tsx
+|           
++---assets
+|       react.svg
+|       
++---componentes
+|   +---comunes
+|   |       BarraNavegacion.tsx
+|   |       PiePagina.tsx
+|   |       
+|   +---formularios
+|   |       index.ts
+|   |       
+|   +---graficos
+|   |       index.ts
+|   |       
+|   \---ui
+|           Boton.tsx
+|           Contenedor.tsx
+|           TituloSeccion.tsx
+|           
++---dominios
+|   +---contacto
+|   |   |   datosContacto.ts
+|   |   |   index.ts
+|   |   |   
+|   |   +---api
+|   |   |       contactoApi.ts
+|   |   |       
+|   |   \---componentes
+|   |           FormularioContacto.tsx
+|   |           ImagenesContacto.tsx
+|   |           InfoContacto.tsx
+|   |           
+|   +---inicio
+|   |   |   datosClientes.ts
+|   |   |   datosInicio.ts
+|   |   |   index.ts
+|   |   |   
+|   |   +---api
+|   |   |       index.ts
+|   |   |       
+|   |   \---componentes
+|   |           CarruselHero.tsx
+|   |           CintaClientes.tsx
+|   |           SeccionPorQueElegirnos.tsx
+|   |           SeccionSobreNosotros.tsx
+|   |           
+|   +---proyectos
+|   |   |   datosProyectos.ts
+|   |   |   index.ts
+|   |   |   
+|   |   +---api
+|   |   |       proyectosApi.ts
+|   |   |       
+|   |   \---componentes
+|   |           GrillaProyectos.tsx
+|   |           ModalDetalleProyecto.tsx
+|   |           TarjetaProyecto.tsx
+|   |           
+|   \---sitio
+|       |   datosNavegacion.ts
+|       |   datosNoEncontrado.ts
+|       |   datosPiePagina.ts
+|       |   datosSitio.ts
+|       |   index.ts
+|       |   
+|       \---api
+|               index.ts
+|               
++---estilos
+|       base.css
+|       
++---lib
+|   +---formateadores
+|   |       index.ts
+|   |       
+|   +---http
+|   |       clienteHttp.ts
+|   |       
+|   +---utils
+|   |       cn.ts
+|   |       
+|   \---validacion
+|           index.ts
+|           
+\---paginas
+    +---contacto
+    |       PaginaContacto.tsx
+    |       
+    +---inicio
+    |       PaginaInicio.tsx
+    |       
+    +---no-encontrado
+    |       PaginaNoEncontrada.tsx
+    |       
+    \---proyectos
+            PaginaProyectos.tsx
+```
+
+### Router y paginas (actual)
+- Router principal: `src/app/router/RouterPrincipal.tsx`
+- Layout principal: `src/app/layouts/LayoutPrincipal.tsx`
+- Paginas: `PaginaInicio`, `PaginaProyectos`, `PaginaContacto`, `PaginaNoEncontrada`
+- Scroll por hash: `src/app/router/ScrollAlHash.tsx`
+
+### Dominios (actual)
+- `dominios/inicio`: secciones del home + datos del hero/intro/clientes.
+- `dominios/proyectos`: grilla, tarjetas, modal + datos de proyectos.
+- `dominios/contacto`: formulario, info, imagenes + datos de contacto.
+- `dominios/sitio`: configuracion global (navbar, footer, sitio, 404).
+
+### Rutas activas (actual)
+- `/`
+- `/proyectos`
+- `/contacto`
+- `*` (no encontrado)
