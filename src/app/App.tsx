@@ -1,24 +1,16 @@
 import { BrowserRouter } from 'react-router-dom'
-import { MotionConfig } from 'framer-motion'
-import { AppRouter } from './AppRouter'
-import { ScrollToHash } from './ScrollToHash'
-import { Navbar } from '../components/shared/Navbar'
-import { Footer } from '../components/shared/Footer'
+import { ProveedoresApp } from './providers/ProveedoresApp'
+import { ScrollAlHash } from './router/ScrollAlHash'
+import { RouterPrincipal } from './router/RouterPrincipal'
 
 const App = () => {
   return (
-    <MotionConfig reducedMotion="user">
+    <ProveedoresApp>
       <BrowserRouter>
-        <ScrollToHash />
-        <div className="flex min-h-screen flex-col bg-bdk-light text-slate-900">
-          <Navbar />
-          <main className="flex-1">
-            <AppRouter />
-          </main>
-          <Footer />
-        </div>
+        <ScrollAlHash />
+        <RouterPrincipal />
       </BrowserRouter>
-    </MotionConfig>
+    </ProveedoresApp>
   )
 }
 

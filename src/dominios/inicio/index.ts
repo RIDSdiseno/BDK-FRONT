@@ -1,0 +1,6 @@
+export * from './datosInicio'
+export * from './datosClientes'
+export * from './componentes/CarruselHero'
+export * from './componentes/SeccionSobreNosotros'
+export * from './componentes/SeccionPorQueElegirnos'
+export * from './componentes/CintaClientes'

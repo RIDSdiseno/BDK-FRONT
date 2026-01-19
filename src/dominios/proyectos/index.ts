@@ -1,0 +1,4 @@
+export * from './datosProyectos'
+export * from './componentes/TarjetaProyecto'
+export * from './componentes/ModalDetalleProyecto'
+export * from './componentes/GrillaProyectos'
