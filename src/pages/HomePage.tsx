@@ -1,7 +1,7 @@
-﻿import { HeroCarousel } from '../features/home/sections/HeroCarousel'
+import { HeroCarousel } from '../features/home/sections/HeroCarousel'
 import { AboutSection } from '../features/home/sections/AboutSection'
 import { WhyChooseUs } from '../features/home/sections/WhyChooseUs'
-import { ClientsCarousel } from '../features/home/sections/ClientsCarousel'
+import { ClientsMarquee } from '../features/home/sections/ClientsMarquee'
 
 const HomePage = () => {
   return (
@@ -9,7 +9,7 @@ const HomePage = () => {
       <HeroCarousel />
       <AboutSection />
       <WhyChooseUs />
-      <ClientsCarousel />
+      <ClientsMarquee />
     </div>
   )
 }

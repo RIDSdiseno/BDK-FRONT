@@ -1,4 +1,4 @@
-﻿import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import HomePage from '../pages/HomePage'
 import ProyectosPage from '../pages/ProyectosPage'
 import ContactoPage from '../pages/ContactoPage'
@@ -8,7 +8,7 @@ const NotFound = () => {
   return (
     <div className="flex min-h-[60vh] items-center justify-center px-6 py-16 text-center">
       <div className="space-y-3">
-        <p className="text-sm uppercase tracking-[0.3em] text-bdk-plomo">
+        <p className="text-sm uppercase tracking-[0.3em] text-bdk-gray">
           {notFoundContent.kicker}
         </p>
         <h1 className="text-3xl font-heading text-slate-900">

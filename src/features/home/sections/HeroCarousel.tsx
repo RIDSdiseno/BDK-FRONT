@@ -1,16 +1,19 @@
-﻿import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { heroCard, heroCarouselLabels, heroSlides } from '../../../data/slides'
+import { heroCard, heroCarouselLabels, heroSlides } from '../../../data/home'
 import { buttonClasses } from '../../../components/shared/Button'
 import { Container } from '../../../components/shared/Container'
-import { cn } from '../../../lib/utils'
+import { cn } from '../../../lib/cn'
 
 export const HeroCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
-    if (heroSlides.length < 2) {
+    if (heroSlides.length < 2 || shouldReduceMotion || isPaused) {
       return undefined
     }
 
@@ -19,68 +22,71 @@ export const HeroCarousel = () => {
     }, 8000)
 
     return () => window.clearInterval(interval)
-  }, [heroSlides.length])
+  }, [isPaused, shouldReduceMotion])
 
   const goTo = (index: number) => {
     const nextIndex = (index + heroSlides.length) % heroSlides.length
     setActiveIndex(nextIndex)
   }
 
+  const activeSlide = heroSlides[activeIndex]
+
   return (
-    <section className="relative overflow-hidden bg-bdk-navy text-white">
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(242,183,5,0.22),_transparent_55%)]" />
-      <div className="absolute inset-0 bg-[linear-gradient(120deg,_rgba(11,27,58,0.95),_rgba(11,27,58,0.7),_rgba(242,183,5,0.2))] bg-[length:200%_200%] animate-gradient-shift motion-reduce:animate-none" />
-      <div className="absolute -left-20 top-16 h-56 w-56 rounded-full bg-bdk-yellow/25 blur-3xl animate-float motion-reduce:animate-none" />
-      <div className="absolute bottom-16 right-12 h-40 w-40 rounded-full bg-white/10 blur-2xl animate-float motion-reduce:animate-none" />
+    <section
+      className="relative overflow-hidden bg-bdk-navy text-white"
+      aria-roledescription="carousel"
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(243,123,29,0.25),_transparent_55%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(120deg,_rgba(11,27,58,0.98),_rgba(11,27,58,0.75),_rgba(243,123,29,0.18))]" />
       <div className="relative">
-        <div className="relative h-[420px] overflow-hidden sm:h-[480px] md:h-[560px]">
-          <div
-            className="flex h-full transition-transform duration-1000 ease-[cubic-bezier(0.22,1,0.36,1)]"
-            style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-          >
-            {heroSlides.map((slide, index) => (
-              <div key={slide.id} className="relative min-w-full">
-                <img
-                  src={slide.image}
-                  alt={slide.title ?? heroCarouselLabels.defaultAlt}
-                  className={cn(
-                    'h-full w-full object-cover transition-transform duration-[1400] ease-out',
-                    index === activeIndex
-                      ? 'animate-kenburns motion-reduce:animate-none'
-                      : 'scale-110',
-                  )}
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-bdk-navy/80 via-bdk-navy/40 to-transparent" />
-                <Container className="relative z-10 flex h-full items-end pb-20">
-                  <div
-                    className={cn(
-                      'max-w-xl space-y-3 text-left text-white',
-                      index === activeIndex
-                        ? 'animate-slide-in motion-reduce:animate-none'
-                        : 'opacity-0',
-                    )}
-                    aria-hidden={index !== activeIndex}
-                  >
-                    {slide.title ? (
-                      <h1 className="text-2xl font-heading sm:text-3xl md:text-4xl">
-                        {slide.title}
-                      </h1>
-                    ) : null}
-                    {slide.text ? (
-                      <p className="text-sm text-white/90 md:text-base">
-                        {slide.text}
-                      </p>
-                    ) : null}
-                  </div>
-                </Container>
-              </div>
-            ))}
-          </div>
+        <div
+          className="relative h-[420px] overflow-hidden sm:h-[480px] md:h-[560px]"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeSlide.id}
+              className="absolute inset-0"
+              initial={{ opacity: 0, scale: 1.02 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.04 }}
+              transition={{ duration: shouldReduceMotion ? 0 : 0.8 }}
+            >
+              <motion.img
+                src={activeSlide.image}
+                alt={activeSlide.title ?? heroCarouselLabels.defaultAlt}
+                className="h-full w-full object-cover"
+                animate={
+                  shouldReduceMotion
+                    ? { scale: 1 }
+                    : { scale: 1.05, y: -8 }
+                }
+                transition={{ duration: 6, ease: 'easeOut' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-bdk-navy/80 via-bdk-navy/40 to-transparent" />
+              <Container className="relative z-10 flex h-full items-end pb-20">
+                <motion.div
+                  className="max-w-xl space-y-3 text-left"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
+                >
+                  <h1 className="text-2xl font-heading sm:text-3xl md:text-4xl">
+                    {activeSlide.title}
+                  </h1>
+                  <p className="text-sm text-white/90 md:text-base">
+                    {activeSlide.text}
+                  </p>
+                </motion.div>
+              </Container>
+            </motion.div>
+          </AnimatePresence>
 
           <div className="absolute inset-y-0 left-4 flex items-center">
             <button
               type="button"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-bdk-yellow/40 bg-bdk-navy/40 text-bdk-yellow backdrop-blur transition hover:scale-105 hover:border-bdk-yellow hover:bg-bdk-yellow hover:text-bdk-navy"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-bdk-orange/70 hover:text-bdk-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bdk-orange"
               onClick={() => goTo(activeIndex - 1)}
               aria-label={heroCarouselLabels.previous}
             >
@@ -90,7 +96,7 @@ export const HeroCarousel = () => {
           <div className="absolute inset-y-0 right-4 flex items-center">
             <button
               type="button"
-              className="flex h-11 w-11 items-center justify-center rounded-full border border-bdk-yellow/40 bg-bdk-navy/40 text-bdk-yellow backdrop-blur transition hover:scale-105 hover:border-bdk-yellow hover:bg-bdk-yellow hover:text-bdk-navy"
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/30 bg-white/10 text-white backdrop-blur transition hover:-translate-y-0.5 hover:border-bdk-orange/70 hover:text-bdk-orange focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-bdk-orange"
               onClick={() => goTo(activeIndex + 1)}
               aria-label={heroCarouselLabels.next}
             >
@@ -105,25 +111,35 @@ export const HeroCarousel = () => {
                 type="button"
                 onClick={() => goTo(index)}
                 className={cn(
-                  'h-2.5 w-2.5 rounded-full border border-bdk-yellow/60 transition',
+                  'h-2.5 w-2.5 rounded-full border border-white/40 transition',
                   index === activeIndex
-                    ? 'bg-bdk-yellow shadow-[0_0_10px_rgba(242,183,5,0.8)]'
-                    : 'bg-white/10 hover:bg-bdk-yellow/70',
+                    ? 'bg-bdk-orange shadow-[0_0_12px_rgba(243,123,29,0.8)]'
+                    : 'bg-white/20 hover:bg-bdk-orange/70',
                 )}
                 aria-label={`${heroCarouselLabels.goTo} ${index + 1}`}
+                aria-current={index === activeIndex}
               />
             ))}
           </div>
         </div>
 
         <Container className="relative z-10 -mt-16 pb-16">
-          <div className="max-w-xl rounded-2xl border border-bdk-yellow/30 bg-white/95 p-8 text-slate-900 shadow-2xl shadow-bdk-navy/30 transition hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(11,27,58,0.35)] animate-fade-up motion-reduce:animate-none md:p-10">
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-bdk-yellow">
+          <motion.div
+            className="max-w-xl rounded-2xl border border-bdk-orange/25 bg-white/95 p-8 text-slate-900 shadow-2xl shadow-bdk-navy/30 transition hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(11,27,58,0.35)] md:p-10"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.4 }}
+            transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-bdk-orange">
               {heroCard.kicker}
             </p>
             <h2 className="mt-3 text-2xl font-heading text-bdk-navy md:text-3xl">
               {heroCard.title}
             </h2>
+            <p className="mt-2 text-sm font-semibold text-slate-700">
+              {heroCard.subtitle}
+            </p>
             <p className="mt-4 text-sm text-slate-600 md:text-base">
               {heroCard.description}
             </p>
@@ -133,13 +149,13 @@ export const HeroCarousel = () => {
                 className={buttonClasses({
                   variant: 'primary',
                   size: 'md',
-                  className: 'animate-glow motion-reduce:animate-none',
+                  className: 'animate-pulse-glow motion-reduce:animate-none',
                 })}
               >
                 {heroCard.ctaLabel}
               </Link>
             </div>
-          </div>
+          </motion.div>
         </Container>
       </div>
     </section>

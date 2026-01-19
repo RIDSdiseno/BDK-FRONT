@@ -1,13 +1,11 @@
-﻿export type NavLink = {
+export type NavLink = {
   label: string
   href: string
 }
 
 export const navLinks: NavLink[] = [
-  { label: 'Inicio', href: '/' },
-  { label: 'Quienes Somos', href: '/#quienes-somos' },
+  { label: 'Principal', href: '/' },
   { label: 'Proyectos', href: '/proyectos' },
-  { label: 'Contacto', href: '/contacto' },
 ]
 
 export const navCta = {

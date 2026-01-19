@@ -1,4 +1,4 @@
-﻿import { cn } from '../../lib/utils'
+import { cn } from '../../lib/cn'
 
 type SectionTitleProps = {
   title: string
@@ -22,14 +22,14 @@ export const SectionTitle = ({
   const subtitleClass =
     tone === 'dark' ? 'text-slate-200' : 'text-slate-600'
   const kickerClass =
-    tone === 'dark' ? 'text-bdk-yellow' : 'text-bdk-yellow'
+    tone === 'dark' ? 'text-bdk-orange' : 'text-bdk-orange'
   const lineClass =
-    tone === 'dark' ? 'bg-bdk-yellow/70' : 'bg-bdk-yellow'
+    tone === 'dark' ? 'bg-bdk-orange/70' : 'bg-bdk-orange'
 
   return (
     <div
       className={cn(
-        'space-y-3 animate-fade-up motion-reduce:animate-none',
+        'space-y-3',
         align === 'center' ? 'text-center' : 'text-left',
         className,
       )}

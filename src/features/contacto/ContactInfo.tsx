@@ -1,4 +1,5 @@
-﻿import { Mail, MapPin, Phone } from 'lucide-react'
+import { motion, useReducedMotion } from 'framer-motion'
+import { Mail, MapPin, Phone } from 'lucide-react'
 import { contactPage } from '../../data/contact'
 
 const iconMap = {
@@ -8,8 +9,16 @@ const iconMap = {
 }
 
 export const ContactInfo = () => {
+  const shouldReduceMotion = useReducedMotion()
+
   return (
-    <div className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm animate-fade-up motion-reduce:animate-none">
+    <motion.div
+      className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+      initial={{ opacity: 0, y: 18 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.4 }}
+      transition={{ duration: shouldReduceMotion ? 0 : 0.5 }}
+    >
       <h3 className="text-lg font-heading text-bdk-navy">
         {contactPage.infoTitle}
       </h3>
@@ -18,7 +27,7 @@ export const ContactInfo = () => {
           const Icon = iconMap[item.id as keyof typeof iconMap] ?? MapPin
           return (
             <div key={item.id} className="flex items-start gap-3">
-              <span className="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-bdk-light text-bdk-yellow">
+              <span className="mt-1 flex h-9 w-9 items-center justify-center rounded-full bg-bdk-orange/10 text-bdk-orange">
                 <Icon className="h-4 w-4" />
               </span>
               <div>
@@ -28,7 +37,7 @@ export const ContactInfo = () => {
                 {item.href ? (
                   <a
                     href={item.href}
-                    className="text-sm font-semibold text-slate-700 hover:text-bdk-yellow"
+                    className="text-sm font-semibold text-slate-700 hover:text-bdk-orange"
                   >
                     {item.value}
                   </a>
@@ -42,6 +51,6 @@ export const ContactInfo = () => {
           )
         })}
       </div>
-    </div>
+    </motion.div>
   )
 }

@@ -1,4 +1,4 @@
-﻿export type FooterItem = {
+export type FooterItem = {
   label: string
   href?: string
 }
@@ -16,12 +16,12 @@ export type SocialLink = {
 
 export const footerContent = {
   description:
-    'BDK Ingenieria y Construccion desarrolla proyectos integrales en infraestructura, obras civiles e industria.',
+    'BDK Ingenieria y Construccion desarrolla proyectos integrales en infraestructura, obras civiles e industria con foco en calidad y seguridad.',
   columns: [
     {
       title: 'Menu',
       items: [
-        { label: 'Inicio', href: '/' },
+        { label: 'Principal', href: '/' },
         { label: 'Proyectos', href: '/proyectos' },
         { label: 'Contacto', href: '/contacto' },
       ],

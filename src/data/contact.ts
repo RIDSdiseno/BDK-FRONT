@@ -1,4 +1,4 @@
-﻿export type ContactInfoItem = {
+export type ContactInfoItem = {
   id: string
   label: string
   value: string
@@ -14,17 +14,19 @@ export const contactPage = {
   form: {
     title: 'Envianos un mensaje',
     submitLabel: 'Enviar mensaje',
+    submittingLabel: 'Enviando...',
+    successMessage: 'Mensaje enviado. Te contactaremos a la brevedad.',
     fields: {
       name: { label: 'Nombre', placeholder: 'Nombre y apellido' },
       email: { label: 'Correo', placeholder: 'tu@empresa.com' },
-      phone: { label: 'Telefono', placeholder: '+56 9 0000 0000' },
+      phone: { label: 'Telefono (opcional)', placeholder: '+56 9 0000 0000' },
       message: { label: 'Mensaje', placeholder: 'Escribe tu consulta' },
     },
     errors: {
       name: 'Ingresa tu nombre.',
       emailRequired: 'Ingresa tu correo.',
       emailInvalid: 'Ingresa un correo valido.',
-      phone: 'Ingresa tu telefono.',
+      phoneInvalid: 'Ingresa un telefono valido.',
       message: 'Cuentanos en que podemos ayudar.',
     },
   },

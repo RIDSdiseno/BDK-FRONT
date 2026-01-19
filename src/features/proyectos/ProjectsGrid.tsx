@@ -1,4 +1,5 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import { projects, type Project } from '../../data/projects'
 import { ProjectCard } from './ProjectCard'
 import { ProjectDetailModal } from './ProjectDetailModal'
@@ -19,12 +20,14 @@ export const ProjectsGrid = () => {
         ))}
       </div>
 
-      {activeProject ? (
-        <ProjectDetailModal
-          project={activeProject}
-          onClose={() => setActiveProject(null)}
-        />
-      ) : null}
+      <AnimatePresence>
+        {activeProject ? (
+          <ProjectDetailModal
+            project={activeProject}
+            onClose={() => setActiveProject(null)}
+          />
+        ) : null}
+      </AnimatePresence>
     </div>
   )
 }

@@ -7,8 +7,8 @@ const ProyectosPage = () => {
   return (
     <div className="bg-bdk-light">
       <section className="relative overflow-hidden bg-bdk-navy py-16 text-white sm:py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(242,183,5,0.2),_transparent_60%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(120deg,_rgba(11,27,58,0.95),_rgba(11,27,58,0.7),_rgba(242,183,5,0.18))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(243,123,29,0.2),_transparent_60%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(120deg,_rgba(11,27,58,0.95),_rgba(11,27,58,0.7),_rgba(243,123,29,0.18))]" />
         <Container className="relative space-y-4">
           <SectionTitle
             title={projectsPage.title}

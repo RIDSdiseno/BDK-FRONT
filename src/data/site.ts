@@ -1,4 +1,4 @@
-﻿export const siteConfig = {
+export const siteConfig = {
   name: 'BDK Ingenieria y Construccion',
   shortName: 'BDK',
   tagline: 'Ingenieria y Construccion',

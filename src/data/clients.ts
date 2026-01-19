@@ -1,4 +1,4 @@
-﻿export type ClientLogo = {
+export type ClientLogo = {
   name: string
   src: string
 }
@@ -7,11 +7,7 @@ export const clientsSection = {
   kicker: 'Clientes',
   title: 'Clientes que confian en nosotros',
   subtitle: 'Relaciones de largo plazo en distintos sectores productivos.',
-  labels: {
-    previous: 'Anterior logos',
-    next: 'Siguiente logos',
-    goTo: 'Ir a logos',
-  },
+  speed: 32,
   logos: [
     { name: 'Cliente 01', src: '/carrusel1.PNG' },
     { name: 'Cliente 02', src: '/carrusel2.PNG' },
