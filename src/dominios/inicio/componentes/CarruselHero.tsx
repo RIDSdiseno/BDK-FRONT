@@ -149,7 +149,8 @@ export const CarruselHero = () => {
                 className={clasesBoton({
                   variant: 'primary',
                   size: 'md',
-                  className: 'animate-pulse-glow motion-reduce:animate-none',
+                  className:
+                    'animate-pulse-glow motion-reduce:animate-none bg-yellow-400 text-bdk-navy hover:bg-yellow-300 shadow-[0_14px_32px_rgba(242,183,5,0.35)] hover:shadow-[0_18px_40px_rgba(242,183,5,0.45)]',
                 })}
               >
                 {heroCard.ctaLabel}

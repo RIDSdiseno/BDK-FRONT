@@ -32,26 +32,28 @@ export const CintaClientes = () => {
       >
         <div className="filmstrip mask-fade">
           <div className="group overflow-hidden">
-            <div
-              className="flex w-max items-center gap-8 px-6 py-8 animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused]"
-              style={trackSectionStyle}
-            >
-              {logos.map((logo, index) => (
-                <div
-                  key={`${logo.name}-${index}`}
-                  className={cn(
-                    'flex h-20 w-40 items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur',
-                    index >= clientsSection.logos.length && 'opacity-60',
-                  )}
-                  aria-hidden={index >= clientsSection.logos.length}
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.name}
-                    className="h-10 object-contain"
-                  />
-                </div>
-              ))}
+            <div className="animate-film-zoom motion-reduce:animate-none">
+              <div
+                className="flex w-max items-center gap-8 px-6 py-8 animate-marquee motion-reduce:animate-none group-hover:[animation-play-state:paused]"
+                style={trackSectionStyle}
+              >
+                {logos.map((logo, index) => (
+                  <div
+                    key={`${logo.name}-${index}`}
+                    className={cn(
+                      'flex h-20 w-40 items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-4 py-3 backdrop-blur',
+                      index >= clientsSection.logos.length && 'opacity-60',
+                    )}
+                    aria-hidden={index >= clientsSection.logos.length}
+                  >
+                    <img
+                      src={logo.src}
+                      alt={logo.name}
+                      className="h-10 object-contain"
+                    />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>

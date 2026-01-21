@@ -19,6 +19,7 @@ export const contactPage = {
     fields: {
       name: { label: 'Nombre', placeholder: 'Nombre y apellido' },
       email: { label: 'Correo', placeholder: 'tu@empresa.com' },
+      subject: { label: 'Asunto', placeholder: 'Motivo de tu mensaje' },
       phone: { label: 'Telefono (opcional)', placeholder: '+56 9 0000 0000' },
       message: { label: 'Mensaje', placeholder: 'Escribe tu consulta' },
     },
@@ -26,6 +27,7 @@ export const contactPage = {
       name: 'Ingresa tu nombre.',
       emailRequired: 'Ingresa tu correo.',
       emailInvalid: 'Ingresa un correo valido.',
+      subject: 'Indica el asunto (minimo 3 caracteres).',
       phoneInvalid: 'Ingresa un telefono valido.',
       message: 'Cuentanos en que podemos ayudar.',
     },

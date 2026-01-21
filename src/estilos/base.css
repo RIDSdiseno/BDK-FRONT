@@ -101,4 +101,34 @@ button {
       );
     background-size: 36px 36px;
   }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee var(--marquee-duration, 32s) linear infinite;
+    will-change: transform;
+  }
+
+  @keyframes film-zoom {
+    0%,
+    100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.03);
+    }
+  }
+
+  .animate-film-zoom {
+    animation: film-zoom 10s ease-in-out infinite;
+    transform-origin: center;
+    will-change: transform;
+  }
 }

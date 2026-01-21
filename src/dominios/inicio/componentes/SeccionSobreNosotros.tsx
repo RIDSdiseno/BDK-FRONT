@@ -86,44 +86,6 @@ export const SeccionSobreNosotros = () => {
             </motion.div>
           ))}
 
-          <motion.div
-            className="relative z-10 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm md:col-span-2"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.4 }}
-            transition={{ duration: shouldReduceMotion ? 0 : 0.6 }}
-          >
-            <div className="flex items-center justify-between">
-              <img
-                src={aboutSection.logo.src}
-                alt={aboutSection.logo.alt}
-                className="h-12"
-              />
-              <span className="rounded-full bg-bdk-orange/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-bdk-orange">
-                {aboutSection.badge}
-              </span>
-            </div>
-            <p className="mt-3 text-sm text-slate-600">{aboutSection.subtitle}</p>
-            <div className="mt-5">
-              <div className="flex items-center justify-between text-xs font-semibold text-slate-600">
-                <span>{aboutSection.progress.label}</span>
-                <span>{aboutSection.progress.value}%</span>
-              </div>
-              <div className="mt-2 h-2 w-full rounded-full bg-slate-200">
-                <motion.div
-                  className="h-full rounded-full bg-bdk-orange"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${aboutSection.progress.value}%` }}
-                  viewport={{ once: true }}
-                  transition={{ duration: shouldReduceMotion ? 0 : 0.9 }}
-                />
-              </div>
-              <p className="mt-2 text-xs text-slate-500">
-                {aboutSection.progress.note}
-              </p>
-            </div>
-          </motion.div>
-
           {aboutSection.images.map((image, index) => (
             <motion.div
               key={image.src}
