@@ -58,8 +58,8 @@ export const contactPage = {
       alt: 'Equipo de contacto en obra',
     },
     {
-      src: '/FONDOO.PNG',
-      alt: 'Planos y supervision',
+      src: '/construccionm.PNG',
+      alt: 'Trabajador en obra con grua',
     },
   ],
 }

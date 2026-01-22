@@ -83,8 +83,8 @@ export const aboutSection = {
       alt: 'Estructura en construccion',
     },
     {
-      src: '/foto3.PNG',
-      alt: 'Proyecto en ejecucion',
+      src: '/construccionm.PNG',
+      alt: 'Trabajador en obra con grua',
     },
   ],
   progress: {

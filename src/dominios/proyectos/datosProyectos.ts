@@ -43,8 +43,8 @@ export const projects: Project[] = [
       'Desarrollo de infraestructura clinica con foco en calidad, cumplimiento normativo y continuidad operativa.',
     images: [
       {
-        src: '/Foto1.jpeg',
-        alt: 'Proyecto UC Christus - imagen 1',
+        src: '/constru1.PNG',
+        alt: 'Construcción 1 - UC Christus',
       },
       {
         src: '/foto2.jpg',
@@ -66,8 +66,8 @@ export const projects: Project[] = [
       'Implementacion de sistemas industriales con planes de seguridad reforzados y control de calidad por etapas.',
     images: [
       {
-        src: '/FONDOO.PNG',
-        alt: 'Proyecto CHP - imagen 1',
+        src: '/constru2.PNG',
+        alt: 'Construcción 2 - CHP Industrial',
       },
       {
         src: '/FOTO%20DEMSOTRATIVA.PNG',
@@ -93,8 +93,8 @@ export const projects: Project[] = [
       'Construccion de bodegas, patios de maniobra y oficinas tecnicas para operacion 24/7.',
     images: [
       {
-        src: '/header2.jpg',
-        alt: 'Centro Logistico Norte - imagen 1',
+        src: '/constru3.PNG',
+        alt: 'Construcción 3 - Centro Logistico Norte',
       },
       {
         src: '/foto2.jpg',
@@ -116,8 +116,8 @@ export const projects: Project[] = [
       'Ejecucion de estructura principal, accesos y mitigaciones para conectividad regional.',
     images: [
       {
-        src: '/header3.png',
-        alt: 'Puente Rio Claro - imagen 1',
+        src: '/constru4.PNG',
+        alt: 'Construcción 4 - Puente Rio Claro',
       },
       {
         src: '/FONDOO.PNG',
@@ -139,8 +139,8 @@ export const projects: Project[] = [
       'Renovacion de lineas de proceso, salas de control y sistemas auxiliares.',
     images: [
       {
-        src: '/FOTO%20DEMSOTRATIVA.PNG',
-        alt: 'Planta de Tratamiento Sur - imagen 1',
+        src: '/constru5.PNG',
+        alt: 'Construcción 5 - Planta de Tratamiento Sur',
       },
       {
         src: '/Foto1.jpeg',
@@ -162,8 +162,8 @@ export const projects: Project[] = [
       'Desarrollo de campus con eficiencia energetica, climatizacion inteligente y confort interior.',
     images: [
       {
-        src: '/Foto1.jpeg',
-        alt: 'Campus Tecnologico BDK - imagen 1',
+        src: '/constru6.PNG',
+        alt: 'Construcción 6 - Campus Tecnologico BDK',
       },
       {
         src: '/header3.png',
