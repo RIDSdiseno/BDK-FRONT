@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FormEvent } from 'react'
-import axios from 'axios'
+import { isAxiosError } from 'axios'
 import { AnimatePresence, motion } from 'framer-motion'
 import { contactPage } from '../datosContacto'
 import { clasesBoton } from '../../../componentes/ui/Boton'
@@ -33,7 +33,7 @@ const messageMinLength = 10
 const subjectMinLength = 3
 
 const resolveApiError = (error: unknown) => {
-  if (axios.isAxiosError(error)) {
+  if (isAxiosError(error)) {
     const status = error.response?.status
     if (status === 400) {
       const apiMessage = error.response?.data?.error

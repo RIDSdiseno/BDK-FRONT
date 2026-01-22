@@ -1,4 +1,4 @@
-import { clienteHttp } from '../../../lib/http/clienteHttp'
+import { api } from '../../../lib/api'
 
 type EnvioContacto = {
   name: string
@@ -16,7 +16,7 @@ export const enviarContacto = async (payload: EnvioContacto) => {
   const asunto = payload.subject.trim()
   const telefono = payload.phone?.trim()
   const company = payload.company?.trim()
-  const { data } = await clienteHttp.post('/contacto', {
+  const { data } = await api.post('/contacto', {
     nombre: payload.name.trim(),
     email: payload.email.trim(),
     mensaje: payload.message.trim(),
